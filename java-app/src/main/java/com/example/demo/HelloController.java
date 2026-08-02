@@ -12,7 +12,8 @@ public class HelloController {
     public Map<String, String> hello() {
         return Map.of(
             "message", "Hello from AKS!",
-            "version", "1.0.0"
+            "version", "1.0.1",
+            "env", "demo"
         );
     }
 
