@@ -7,4 +7,4 @@ resources:
 
 images:
 - name: aksdemob6961972.azurecr.io/demo-app
-  newTag: 2d3d7b695e599e90f90316e22a02f7b8ca565a46
+  newTag: c930a27d2993b01477f76a14227e6143d8b1f3d0
