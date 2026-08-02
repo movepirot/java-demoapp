@@ -2,9 +2,9 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - deployment.yaml
-  - service.yaml
+- deployment.yaml
+- service.yaml
 
 images:
-  - name: aksdemob6961972.azurecr.io/demo-app
-    newTag: latest
+- name: aksdemob6961972.azurecr.io/demo-app
+  newTag: 2d3d7b695e599e90f90316e22a02f7b8ca565a46
