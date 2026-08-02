@@ -1,0 +1,48 @@
+# Loki Helm values
+# Chart: grafana/loki
+
+loki:
+  commonConfig:
+    replication_factor: 1
+  storage:
+    type: filesystem
+  auth_enabled: false
+  schemaConfig:
+    configs:
+      - from: "2024-01-01"
+        store: tsdb
+        object_store: filesystem
+        schema: v13
+        index:
+          prefix: loki_index_
+          period: 24h
+
+deploymentMode: SingleBinary
+
+singleBinary:
+  replicas: 1
+  persistence:
+    enabled: true
+    size: 10Gi
+
+# Promtail ships logs from all pods to Loki
+promtail:
+  enabled: false  # deployed separately via grafana/promtail chart
+
+gateway:
+  enabled: true
+  service:
+    type: ClusterIP
+
+# Disable components not needed for single-node dev setup
+read:
+  replicas: 0
+write:
+  replicas: 0
+backend:
+  replicas: 0
+
+chunksCache:
+  enabled: false
+resultsCache:
+  enabled: false

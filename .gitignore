@@ -1,0 +1,20 @@
+# Terraform
+terraform/.terraform/
+terraform/.terraform.lock.hcl
+terraform/*.tfplan
+terraform/terraform.tfstate
+terraform/terraform.tfstate.backup
+terraform/override.tf
+terraform/override.tf.json
+
+# Java
+java-app/target/
+java-app/.mvn/wrapper/maven-wrapper.jar
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# OS
+.DS_Store

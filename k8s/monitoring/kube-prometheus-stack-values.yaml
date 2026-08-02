@@ -1,0 +1,40 @@
+# kube-prometheus-stack Helm values
+# Chart: prometheus-community/kube-prometheus-stack
+
+grafana:
+  enabled: true
+  adminPassword: "admin"  # Change in production — use a Secret or external secret manager
+  service:
+    type: LoadBalancer
+  persistence:
+    enabled: true
+    size: 5Gi
+  additionalDataSources:
+    - name: Loki
+      type: loki
+      url: http://loki-gateway.monitoring.svc.cluster.local
+      access: proxy
+      isDefault: false
+
+prometheus:
+  prometheusSpec:
+    retention: 7d
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 10Gi
+    # Scrape all pods with prometheus.io/scrape annotation
+    podMonitorSelectorNilUsesHelmValues: false
+    serviceMonitorSelectorNilUsesHelmValues: false
+
+alertmanager:
+  enabled: true
+
+nodeExporter:
+  enabled: true
+
+kubeStateMetrics:
+  enabled: true
