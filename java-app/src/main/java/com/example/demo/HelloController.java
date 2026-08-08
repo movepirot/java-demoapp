@@ -11,7 +11,7 @@ public class HelloController {
     @GetMapping("/")
     public Map<String, String> hello() {
         return Map.of(
-            "message", "Hello from AKS!",
+            "message", "Hello from AKS! ",
             "version", "1.0.5",
             "env", "demo"
         );
